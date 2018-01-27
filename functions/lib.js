@@ -80,9 +80,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(description, 'description', '/Users/dorischeng/Documents/infinity/lib/index.js');
+  __REACT_HOT_LOADER__.register(description, 'description', '/Users/raspritkaur/infinityandbeyond/lib/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/dorischeng/Documents/infinity/lib/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/raspritkaur/infinityandbeyond/lib/index.js');
 }();
 
 ;

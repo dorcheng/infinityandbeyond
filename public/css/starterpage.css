@@ -1,0 +1,194 @@
+/*
+COLORS:
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+
+*, /*update universal, also select psuedo-elements and before psuedo elements*/
+*::after, /*if there are rem/pixels it wouldnt be put in our global reset*/
+*::before {
+  margin: 0; /*margin and padding not applied auto in browsers */
+  padding: 0;
+  box-sizing: inherit; /*use power of INHERITANCE add this and move border-box to body*/
+}
+
+
+html {
+  font-size: 62.5%; /*ROOT FONT SIZE changed from 10px-- most pixel padding-- divide what we want 10px / 16 is 62.5% */
+/*bad practice to have pixels. Shouldnt really be 10px but problem is that we override the browser font size setting that the user can manually change in settings. ex: bad site the increase the default of browsers. If we keep pixels we remove ability for them to see properly . So font size will be percentage*/
+}
+
+body {
+  font-family: "Lato", sans-serif; /*see html googlefont*/
+  font-weight: 400;
+  font-size: 1.6rem; /*originally started as pixels explained in Section 3.18*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; /*change box model so borders and padding are no longer added to total width or height we specify for height*/
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(248, 80, 50, 0.5),rgba(248, 80, 50, 0.5)), url(../img/hssbg1.png);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 86%, 0% 75%, 0 0); /*top left, top right, bottom right, bottom left*/
+}
+
+.header__logo-box {
+  position: absolute; /**/
+  top: 4rem; /*parent element(header) which has its position set to relative */
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+  backface-visibility: hidden; /*when animations are shaky- this determines if backpart is visible or hidden*/
+  margin-bottom: 6rem;
+}
+.heading-primary--main {
+  display: block; /*block-level elements occcupy entire width available and line breaks after and before*/
+  font-size: 6rem; /**/
+  font-weight: 400; /*default h1 has a higher font weight*/
+  letter-spacing: 3.5rem; /**/
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+  /*animation-delay: 3s;
+  animation-interation: 3;*/
+
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem; /**/
+  font-weight: 700; /*look at google font.html to see weight*/
+  letter-spacing: 1.75rem; /**/
+
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /*browser preformance its best to only animate transform and opacity*/
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0); /*it's going to look the way it starts*/
+  }
+}
+
+/*psuedo-class special state of selector- we style elements under a special condition*/
+@keyframes moveInRight {
+  0% {
+    opacity: 0; /*browser preformance its best to only animate transform and opacity*/
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0); /*it's going to look the way it starts*/
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0; /*browser preformance its best to only animate transform and opacity*/
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0); /*it's going to look the way it starts*/
+  }
+}
+
+#btn1{
+  position: absolute;
+  left: 0%;
+}
+#btn2{
+    position: absolute;
+    left: 43%;
+}
+#btn3{
+    position: absolute;
+    left: 78%;
+}
+.btn:link, /*selector when it is an anchor element*/
+.btn:visited { /*state when user already has already clicked on button and sees button again*/
+  text-transform: uppercase;
+  text-decoration: none; /*removes link underline*/
+  padding: 1.5rem 2rem; /*top botton*/ /* if we have 4 numbers: top right botton left*/
+  display: inline-block; /*always add with paddings*/
+  border-radius: 10rem; /*shape round image*/
+  transition: all .2s;
+  font-size: 1.6rem; /*added in section 3.18 because original pixel font-size started at 16 (see previous commits)*/
+}
+
+.btn:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0  1rem 2rem rgba(0,0,0,.2);  /*X, Y, blur/shadow we want to see, color and opacity*/
+}
+
+.btn:active {
+  transform: translateY(-1px); /*in relation to initial link state*/
+  box-shadow: 0  .5rem 1rem rgba(0,0,0,.2);
+}
+
+.btn--white {
+  background-color: #ffffff;
+  color: #777777;
+}
+
+/*after psuedo acts like a virtual element right after the element we're selecting. and we can style that element. can be powerful for cool effects.*/
+.btn::after { /* trick is to add an element that looks exactly like the button we already have but we put it behind the button. when we hover out of button then this hidden psuedo element basically goes back behind the button*/
+    content: ""; /*in order for an after psuedo element to appear we need to specify the content property and display (like absolute top left)*/
+    display: inline-block; /*need to specify with ::after*/
+    height: 100%; /*child element so it is 100% of parent element button*/
+    width: 100%;
+    border-radius: 10rem; /*set same as parent*/
+    position: absolute; /* see line 119 --positioning needs to have a relative reference, which is first relative reference it can find. which */
+    top: 0;
+    left: 0;
+    z-index: -1; /*hide behind .btn:visited */
+    transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #FFFFFF;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.3) scaleY(1.6);
+  opacity: 0; /* need to set transition on original line 148 hover will look like a fade-out*/
+}
+
+.btn--animated { /*only want animation to happen at start, so create a class on original via html */
+  animation: moveInBottom .5s ease-out .75s; /*shorthand conbines 6 animation propoerties name, time, ease, delay*/
+  animation-fill-mode: backwards /*auto apply style of 0% before animation starts*/
+}

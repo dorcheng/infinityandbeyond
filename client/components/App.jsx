@@ -8,7 +8,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: ["Education", "Computer Lab", "Sports and Recreation", "None", "Arts"]
+      events: ["Basketball 1/27 5pm", "Computer Lab 2/2 3pm", "Painting 2/17 9-5pm", "Job Fair 2/4 10-3pm", "Dance Class 1/31 7-8pm"]
     }
     this.renderTags = this.renderTags.bind(this);
   }
@@ -33,8 +33,7 @@ export default class App extends Component {
 
 
   render() {
-    const { tags } = this.state
-    console.log('tagsgggg?', tags)
+    const { events } = this.state
     return (
       <div>
       <Navbar />
@@ -50,7 +49,7 @@ export default class App extends Component {
           <span className="heading-primary--main">Hackathon!</span>
           <span className="heading-primary--sub">Select an event</span>
         </h1>
-        {tags.length ? tags.map((tag, idx) => {
+        {events.length ? events.map((tag, idx) => {
             console.log('tag?',tag)
               return <a href="#" key={tag} className="btn btn--white btn--animated" id={`btn${idx+1}`}> {tag} </a>
       
