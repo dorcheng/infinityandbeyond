@@ -32,7 +32,7 @@ body {
 
 .header {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(248, 80, 50, 0.5),rgba(248, 80, 50, 0.5)), url(../img/hssbg1.png);
+    background-image: linear-gradient(to right bottom, rgba(248, 80, 50, 0.5),rgba(248, 80, 50, 0.5)), url(../startpage/hssbg1.png);
     background-size: cover;
     background-position: top;
     position: relative;
