@@ -5,7 +5,7 @@ export default function Navbar() {
       <div>
       <header className="header">
         <div className="header__logo-box">
-          <img src="img/add.png" alt="logo" className="header__logo" />
+          <img src="../../public/eventpage/img/add.png" alt="logo" className="header__logo" />
         </div>
        <div className="header__text-container">
         <h1 className="heading-primary">
