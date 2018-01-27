@@ -1,5 +1,8 @@
 import { getAllTags } from '~/utils/tagsAndEvents'
 import React, { Component } from "react";
+import Login from './Login'
+import AllEvents from './AllEvents'
+import Navbar from './Navbar'
 
 export default class App extends Component {
   constructor(props) {
@@ -33,6 +36,11 @@ export default class App extends Component {
     const { tags } = this.state
     console.log('tagsgggg?', tags)
     return (
+      <div>
+      <Navbar />
+      <Login />
+      <AllEvents />
+
       <div className="header">
         <div className="header__logo-box">
           <img src="img/add.png" alt="logo" className="header__logo"/>
@@ -50,8 +58,7 @@ export default class App extends Component {
           }
       </div>
     </div>
-
-
+    </div>
     )
   }
 }
